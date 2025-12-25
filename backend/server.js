@@ -66,12 +66,34 @@ connectDB().catch(err => {
 const app = express();
 
 // CORS Configuration
+const allowedOrigins = [
+  'https://fix-web1.vercel.app',
+  'https://deploy-livid-omega.vercel.app',
+  // Hỗ trợ CLIENT_URL từ environment variable (có thể là string hoặc comma-separated)
+  ...(process.env.CLIENT_URL 
+    ? process.env.CLIENT_URL.split(',').map(url => url.trim())
+    : []
+  )
+].filter(Boolean); // Loại bỏ giá trị rỗng
+
 const corsOptions = {
-  origin: process.env.CLIENT_URL || 'https://deploy-livid-omega.vercel.app',
+  origin: (origin, callback) => {
+    // Cho phép requests không có origin (như mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn(`⚠️  CORS blocked origin: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
+
+console.log('✅ CORS allowed origins:', allowedOrigins);
 app.use(cors(corsOptions));
 app.use(express.json());
 
