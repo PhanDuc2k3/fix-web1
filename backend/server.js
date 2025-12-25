@@ -68,6 +68,7 @@ const app = express();
 // CORS Configuration
 const allowedOrigins = [
   'https://fix-web1.vercel.app',
+  'https://fix-web1.onrender.com',
   'https://deploy-livid-omega.vercel.app',
   // Hỗ trợ CLIENT_URL từ environment variable (có thể là string hoặc comma-separated)
   ...(process.env.CLIENT_URL 
