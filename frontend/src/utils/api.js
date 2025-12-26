@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://webtmdt-server.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL || 'https://webtmdt-server.onrender.com/api';
 
 console.log('🔗 API Base URL:', API_URL);
 

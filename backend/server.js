@@ -69,7 +69,7 @@ const app = express();
 const allowedOrigins = [
   'https://deploy-livid-omega.vercel.app',
   'https://fix-web1.vercel.app',
-  'https://webtmdt-mduc.vercel.app',
+  'https://webtmdt-quan.vercel.app/',
   // Hỗ trợ CLIENT_URL từ environment variable (có thể là string hoặc comma-separated)
   ...(process.env.CLIENT_URL 
     ? process.env.CLIENT_URL.split(',').map(url => url.trim())
