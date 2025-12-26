@@ -1,5 +1,6 @@
 # fix-web1
 
+<<<<<<< HEAD
 ## ⚡ Quick Reference - Tóm tắt nhanh
 
 **Khi có 2 domain (Frontend và Backend), cần sửa 2 file:**
@@ -25,12 +26,24 @@
 
 ### Frontend (Vercel)
 
+=======
+## 🌐 Domain Configuration
+
+### Backend API (Render)
+- **Production URL**: `https://fix-web1.onrender.com`
+- **API Base URL**: `https://fix-web1.onrender.com/api`
+
+### Frontend (Vercel)
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 - **Production URL**: `https://fix-web1.vercel.app`
 
 ## 📝 Những điểm cần thay đổi khi đổi domain
 
 ### 1. Backend - CORS Configuration
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 **File**: `backend/server.js`
 
 Nếu bạn muốn thêm hoặc thay đổi domain frontend được phép truy cập API, cần cập nhật trong phần CORS:
@@ -38,8 +51,14 @@ Nếu bạn muốn thêm hoặc thay đổi domain frontend được phép truy 
 ```javascript
 // CORS Configuration
 const allowedOrigins = [
+<<<<<<< HEAD
   "https://fix-web1.vercel.app", // Frontend Vercel
   "https://deploy-livid-omega.vercel.app", // Frontend backup
+=======
+  'https://fix-web1.vercel.app',      // Frontend Vercel
+  'https://fix-web1.onrender.com',    // Frontend Render (nếu có)
+  'https://deploy-livid-omega.vercel.app', // Frontend backup
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
   // Có thể thêm domain khác tại đây
 ];
 ```
@@ -47,55 +66,87 @@ const allowedOrigins = [
 **Vị trí**: Dòng 69-77 trong `backend/server.js`
 
 ### 2. Frontend - API Base URL
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 **File**: `frontend/src/utils/api.js`
 
 Để thay đổi domain backend API, cần cập nhật:
 
 ```javascript
+<<<<<<< HEAD
 const API_URL =
   import.meta.env.VITE_API_URL || "https://deploy-tfjo.onrender.com/api";
+=======
+const API_URL = import.meta.env.VITE_API_URL || 'https://fix-web1.onrender.com/api';
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 ```
 
 **Vị trí**: Dòng 3 trong `frontend/src/utils/api.js`
 
+<<<<<<< HEAD
 **Lưu ý**:
 
+=======
+**Lưu ý**: 
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 - Có thể sử dụng biến môi trường `VITE_API_URL` để override
 - Tạo file `.env` trong thư mục `frontend` với nội dung: `VITE_API_URL=https://your-backend-url.com/api`
 
 ### 3. Environment Variables
 
 #### Backend `.env`
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 Tạo file `.env` trong thư mục `backend` hoặc root:
 
 ```env
 MONGO_URI=your_mongodb_connection_string
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASSWORD=your_app_password
+<<<<<<< HEAD
 CLIENT_URL=https://fix-web1.vercel.app
+=======
+CLIENT_URL=https://fix-web1.vercel.app,https://fix-web1.onrender.com
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 PORT=5000
 ```
 
 #### Frontend `.env`
+<<<<<<< HEAD
 
 Tạo file `.env` trong thư mục `frontend`:
 
 ```env
 VITE_API_URL=https://deploy-tfjo.onrender.com/api
+=======
+Tạo file `.env` trong thư mục `frontend`:
+
+```env
+VITE_API_URL=https://fix-web1.onrender.com/api
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 ```
 
 ## 🚀 Deployment
 
 ### Backend (Render)
+<<<<<<< HEAD
 
 1. Đảm bảo domain backend là: `https://deploy-tfjo.onrender.com`
+=======
+1. Đảm bảo domain backend là: `https://fix-web1.onrender.com`
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 2. Cấu hình CORS trong `backend/server.js` đã bao gồm domain frontend
 3. Set environment variables trên Render dashboard
 
 ### Frontend (Vercel)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 1. Đảm bảo domain frontend là: `https://fix-web1.vercel.app`
 2. API calls sẽ tự động sử dụng domain từ `frontend/src/utils/api.js`
 3. Có thể override bằng environment variable `VITE_API_URL` trên Vercel
@@ -112,17 +163,26 @@ VITE_API_URL=https://deploy-tfjo.onrender.com/api
 ## 🔍 Kiểm tra domain hiện tại
 
 ### Backend CORS
+<<<<<<< HEAD
 
 Xem trong `backend/server.js` tại dòng 69-77
 
 ### Frontend API
 
+=======
+Xem trong `backend/server.js` tại dòng 69-77
+
+### Frontend API
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 Xem trong `frontend/src/utils/api.js` tại dòng 3
 
 ## 📞 Support
 
 Nếu gặp lỗi CORS, kiểm tra:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5ac5f0385849b92f18c7d62b3841f2f7a1badd25
 1. Domain frontend có trong `allowedOrigins` của backend không
 2. Domain backend có đúng trong `frontend/src/utils/api.js` không
 3. Environment variables đã được set đúng chưa
