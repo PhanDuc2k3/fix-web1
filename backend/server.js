@@ -69,13 +69,15 @@ const app = express();
 const allowedOrigins = [
   'https://deploy-livid-omega.vercel.app',
   'https://fix-web1.vercel.app',
-  'https://webtmdt-quan.vercel.app/',
+  'https://webtmdt-quan.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:3000',
   // Hỗ trợ CLIENT_URL từ environment variable (có thể là string hoặc comma-separated)
   ...(process.env.CLIENT_URL 
-    ? process.env.CLIENT_URL.split(',').map(url => url.trim())
+    ? process.env.CLIENT_URL.split(',').map(url => url.trim().replace(/\/$/, ''))
     : []
   )
-].filter(Boolean); // Loại bỏ giá trị rỗng
+].filter(Boolean).map(url => url.replace(/\/$/, '')); // Loại bỏ giá trị rỗng và trailing slashes
 
 const corsOptions = {
   origin: (origin, callback) => {

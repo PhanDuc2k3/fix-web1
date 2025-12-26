@@ -32,10 +32,15 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.error(`❌ [API Error] ${error.config?.method?.toUpperCase()} ${error.config?.url}`, {
+    const errorDetails = {
       status: error.response?.status,
+      statusText: error.response?.statusText,
       message: error.response?.data?.message || error.message,
-    });
+      data: error.response?.data,
+      url: error.config?.url,
+      baseURL: error.config?.baseURL,
+    };
+    console.error(`❌ [API Error] ${error.config?.method?.toUpperCase()} ${error.config?.url}`, errorDetails);
     
     if (error.response?.status === 401) {
       const url = error.config?.url || '';
